@@ -6,8 +6,10 @@ jobs:
       - image: cimg/base:stable
     environment:
       GITHUB_USERNAME: "yashwagh30"
-      GITHUB_TOKEN: "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"  # Replace with your actual token temporarily
+      GITHUB_TOKEN: "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"  # Replace with your actual token securely
     steps:
+      - setup_remote_docker
+
       - checkout
 
       - run:
@@ -19,7 +21,7 @@ jobs:
       - run:
           name: Clone a Repo using GitHub Token
           command: |
-            git clone https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/$GITHUB_USERNAME/CircleCI-Docker
+            git clone https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/$GITHUB_USERNAME/CircleCI-Docker.git
 
       - run:
           name: Docker Build (test)
