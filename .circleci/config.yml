@@ -7,6 +7,8 @@ jobs:
     environment:
       GITHUB_USERNAME: "yashwagh30"
       GITHUB_TOKEN: "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"  # Use ENV variable securely in practice
+      DOCKER_USERNAME: "yashwagh30"
+      DOCKER_PASSWORD: "Y@shdocker30"
     steps:
       - setup_remote_docker
 
