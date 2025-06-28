@@ -29,6 +29,12 @@ jobs:
             docker --version
             docker build -t $GITHUB_USERNAME/circleci-demo:latest .
 
+      - run:
+    name: Push Docker Image to Docker Hub
+    command: |
+      echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+      docker push $DOCKERHUB_USERNAME/circleci-demo:latest
+
 workflows:
   version: 2
   build-and-test:
