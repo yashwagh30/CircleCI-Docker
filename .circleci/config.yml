@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: cimg/base:stable
     environment:
-    GITHUB_TOKEN ="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"
+    // Docker and Github Ceredential
     steps:
       - setup_remote_docker
 
