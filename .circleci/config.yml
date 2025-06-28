@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Clone a Repo using GitHub Token
           command: |
-            git clone https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/$yashwagh30/CircleCI-Docker.git
+            git clone https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/$GITHUB_USERNAME/CircleCI-Docker
 
       - run:
           name: Docker Build (test)
