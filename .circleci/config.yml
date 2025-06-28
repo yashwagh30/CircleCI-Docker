@@ -1,0 +1,25 @@
+version: 2.1
+
+jobs:
+  build_and_push:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+
+      - setup_remote_docker
+
+      - run:
+          name: Build Docker image
+          command: docker build -t $DOCKERHUB_USERNAME/circleci-demo:latest .
+
+      - run:
+          name: Push to Docker Hub
+          command: |
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker push $DOCKERHUB_USERNAME/circleci-demo:latest
+
+workflows:
+  build:
+    jobs:
+      - build_and_push
