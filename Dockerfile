@@ -2,8 +2,14 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-COPY requirements.txt .         # copy only requirements file first
+# Copy requirements.txt first
+COPY requirements.txt .
+
+# Install Python dependencies
 RUN pip install -r requirements.txt
 
-COPY . .                        # copy all remaining files
+# Copy the rest of the application code
+COPY . .
+
+# Run the app
 CMD ["python", "app.py"]
