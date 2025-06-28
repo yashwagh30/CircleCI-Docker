@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: cimg/base:stable
     environment:
-    //Removed Docker ,Github Cererdentials //
+    GITHUB_TOKEN ="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"
     steps:
       - setup_remote_docker
 
