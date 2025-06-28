@@ -6,7 +6,7 @@ jobs:
       - image: cimg/base:stable
     environment:
       GITHUB_USERNAME: "yashwagh30"
-      GITHUB_TOKEN: "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"  # Replace with your actual token securely
+      GITHUB_TOKEN: "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"  # Use ENV variable securely in practice
     steps:
       - setup_remote_docker
 
@@ -24,11 +24,16 @@ jobs:
             git clone https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/$GITHUB_USERNAME/CircleCI-Docker.git
 
       - run:
-          name: Docker Build (test)
+          name: Docker Build
           command: |
             docker --version
-            docker build -t $GITHUB_USERNAME/circleci-demo:latest .
+            docker build -t $DOCKER_USERNAME/circleci-demo:latest .
 
+      - run:
+          name: Docker Login and Push
+          command: |
+            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+            docker push $DOCKER_USERNAME/circleci-demo:latest
 
 workflows:
   version: 2
