@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: cimg/base:stable
     environment:
+    //Removed Docker ,Github Cererdentials //
     steps:
       - setup_remote_docker
 
